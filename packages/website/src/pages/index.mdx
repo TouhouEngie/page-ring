@@ -1,0 +1,156 @@
+---
+layout: ~/layouts/DocsLayout.astro
+---
+
+import Callout from "~/components/Callout.astro";
+import Footer from "~/components/Footer.astro";
+
+import { Image } from "astro:assets";
+import linkScreenshot from "~/assets/link-screenshot.png";
+import linkScreenshotDark from "~/assets/link-screenshot-dark.png";
+
+---
+
+## join
+
+made a personal website? part of hack club? dm
+{/* prettier-ignore */} <a href="https://hackclub.enterprise.slack.com/team/U09D42Q0ARJ" class="handle">@gideon</a> to get added!
+
+you should include:
+
+- your preferred name or username
+- a link to your amazing personal website
+- an 88x31 button! either as an image, or a link to it hosted on your website
+
+don't have a button yet? make one! you can use a design tool like [Figma](https://figma.com), a pixel art editor like
+[Aseprite](https://www.aseprite.org/), or generate one online, for example [here](https://hekate2.github.io/buttonmaker/)
+or [here](http://88x31.datakra.sh/). make sure it's an image 88px wide and 31px tall, and remember to be
+creative!
+
+---
+
+## include
+
+next you want to include the webring on your personal website! it's
+super easy, just add this script tag to the very end of your website's
+body:
+
+```js
+<script src="https://pagering.gideon.sh/embed.js"></script>
+```
+
+then, wherever you want the webring link to appear in your page, add:
+
+```html
+<pagering-link></pagering-link>
+```
+
+<Image
+  src={linkScreenshot}
+  alt="screenshot of the webring link, light background"
+/>
+
+there are also some extra options you can configure:
+
+- **theme:** the colour of the link - if your website always has a light or dark background, set this to
+  'light' or 'dark'
+
+```html
+<pagering-link theme="dark"></pagering-link>
+```
+
+<Image
+  src={linkScreenshotDark}
+  alt="screenshot of the webring link, dark background"
+/>
+
+---
+
+## api
+
+don't worry be api 🙂
+
+<Callout>
+  if you're using the api instead, **still include the {"<script>"} tag on your
+  page!** it shows the overlay that allows you to navigate between websites.
+</Callout>
+
+**GET /to/\*:** navigate to these pages to redirect to members of the webring
+
+```http
+# GET /to/random     → to a random member
+GET /to/random
+# GET /to/[id]       → to a specific member
+GET /to/acon
+# GET /to/[id]/next  → to the next member
+GET /to/acon/next
+# GET /to/[id]/prev  → to the previous member
+GET /to/acon/prev
+
+302 Found
+```
+
+**GET /api/v1/members:** get all members of the webring
+
+```http
+GET /api/v1/members
+
+200 OK
+[
+  {
+    "id": "acon",
+    "name": "acon",
+    "url": "https://aconlin.com",
+    "buttonUrl": "/buttons/acon.gif"
+  },
+  ...
+]
+```
+
+**GET /api/v1/members/[id]:** get a specific member by id, and the previous and next members
+
+```http
+GET /api/v1/members/acon
+
+200 OK
+{
+  "current": {
+    "id": "acon",
+    "name": "acon",
+    "url": "https://aconlin.com",
+    "buttonUrl": "/buttons/acon.gif"
+  },
+  "prev": { ... },
+  "next": { ... }
+}
+```
+
+**GET /api/v1/embed:** get all members, and the current, previous, and next members for the current site.
+
+<small>
+  If you're calling this from a server, set your 'Origin' header to your site's
+  URL (including http:// or https://)
+</small>
+
+```http
+GET /api/v1/embed
+# provided by your browser :)
+Origin: https://aconlin.com
+
+200 OK
+{
+  "current": {
+    "id": "acon",
+    "name": "acon",
+    "url": "https://aconlin.com",
+    "buttonUrl": "/buttons/acon.gif"
+  },
+  "prev": { ... },
+  "next": { ... },
+  "members": [ ... ]
+}
+```
+
+---
+
+<Footer />

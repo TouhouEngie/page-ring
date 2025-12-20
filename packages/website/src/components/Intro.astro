@@ -1,0 +1,43 @@
+---
+import flowers from "~/assets/flowers-anim.png?url";
+---
+
+<div class="flex items-center gap-3">
+  <img
+    src={flowers}
+    alt=""
+    width="48"
+    height="48"
+    loading="eager"
+    decoding="sync"
+    fetchpriority="high"
+    class="size-12"
+  />
+  <h1 class="text-4xl font-bold">page webring</h1>
+</div>
+<div class="prose mt-6 space-y-4! text-lg text-pretty">
+  <p>
+    in autumn 2025, as the leaves fell and the air turned crisp, teens in Hack
+    Club spent 2 months designing and making their own personal website, as part
+    of the
+    <a href="https://page.hackclub.com">personal website ysws event</a>. these
+    sites gave an outlet for them to showcase themselves, their hobbies and
+    their interests to the world.
+  </p>
+  <p>
+    this webring is a collection of those personal websites, so people (like
+    you!!) can go explore, find new friends, and get inspiration for making your
+    own personal site.
+  </p>
+</div>
+<a href="/to/random" class="group mt-4 inline-block">
+  <div
+    class="border-border text-border relative isolate flex h-10 w-max items-center border-2 bg-white px-3 font-semibold shadow-xs transition group-hover:text-white group-active:scale-95 group-active:border-fuchsia-900"
+  >
+    <div
+      class="bg-border absolute inset-0 -z-10 block origin-right transition not-group-hover:scale-x-0 group-hover:origin-left group-active:bg-fuchsia-900"
+    >
+    </div>
+    enter the webring →
+  </div>
+</a>

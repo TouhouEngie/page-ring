@@ -9,3 +9,63 @@
     "Archivo Variable", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+.prose {
+  @apply leading-relaxed text-neutral-700;
+
+  :where(*) {
+    @apply mt-3;
+  }
+
+  h2 {
+    @apply text-xl font-bold text-black;
+  }
+
+  strong {
+    @apply font-semibold text-black;
+  }
+  small {
+    @apply mt-0.5 block text-sm text-neutral-600;
+  }
+
+  a:not(.handle) {
+    @apply text-link font-semibold underline underline-offset-2 transition hover:text-teal-800 hover:decoration-wavy hover:underline-offset-1;
+    text-decoration-skip-ink: none;
+  }
+
+  a.handle {
+    @apply mx-0.5 rounded-xs border border-cyan-200 bg-cyan-100 px-1 py-1 font-semibold text-cyan-700 transition hover:bg-cyan-200/75;
+  }
+
+  ul {
+    @apply list-disc pl-6;
+
+    li {
+      @apply mt-1.5;
+    }
+  }
+
+  hr {
+    @apply mt-8 mb-6 border-t-2 border-dashed border-neutral-300;
+  }
+
+  img {
+    @apply my-4 w-auto max-w-full border-2 border-neutral-300 bg-white p-0.5;
+  }
+
+  pre:has(code) {
+    @apply my-4 border-2 border-neutral-300 bg-white! p-3 px-4;
+  }
+
+  aside[role="note"] {
+    @apply my-4 border-l-2 border-orange-500 bg-orange-100 p-3 px-4 text-orange-700;
+
+    strong {
+      @apply text-orange-800;
+    }
+  }
+
+  :first-child {
+    @apply mt-0;
+  }
+}
