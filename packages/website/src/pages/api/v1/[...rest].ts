@@ -53,10 +53,7 @@ app.get("/members/:id", async (c) => {
 
 app.get("/embed", async (c) => {
   const origin = c.req.header("Origin");
-  const originHostname = getHostname(origin || "");
-  if (!origin || !originHostname) {
-    return c.text("Origin header missing or invalid", 400);
-  }
+  const originHostname = getHostname(origin || "") || "";
 
   const members = await getAllMembers({ url: new URL(c.req.url) });
 
