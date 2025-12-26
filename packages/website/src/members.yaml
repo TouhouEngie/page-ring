@@ -54,3 +54,8 @@
   name: "joy su"
   url: "https://byjoysu.vercel.app/"
   buttonUrl: "/buttons/byjoysu.gif"
+
+- id: miniaturity
+  name: "miniaturity"
+  url: "https://minipa.ws/"
+  buttonUrl: "https://minipa.ws/images/mini.png"
