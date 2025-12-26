@@ -55,6 +55,11 @@
   url: "https://byjoysu.vercel.app/"
   buttonUrl: "/buttons/byjoysu.gif"
 
+- id: kyle
+  name: "coding corner"
+  url: "https://codingcorner.dev"
+  buttonUrl: "https://codingcorner.dev/buttons/codingcorner.png"
+
 - id: foxy
   name: "foxy"
   url: "https://page.wiffles.xyz"
